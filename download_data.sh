@@ -23,7 +23,8 @@ records=(
   2555143
 )
 
-for i in `seq 1 "${#records[*]}"`
+#for i in `seq 1 "${#records[*]}"`
+for i in `seq 1 4`
 do
   if [ ! -d node"${nodes[i-1]}" ]
   then
