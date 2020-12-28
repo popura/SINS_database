@@ -23,8 +23,8 @@ records=(
   2555143
 )
 
-#for i in `seq 1 "${#records[*]}"`
-for i in `seq 1 4`
+for i in `seq 1 "${#records[*]}"`
+#for i in `seq 1 4`
 do
   if [ ! -d node"${nodes[i-1]}" ]
   then
@@ -35,8 +35,11 @@ do
   for fname in `cat ../../node"${nodes[i-1]}".md5 | awk '{print $2}'`
   do
     echo $fname
-    wget -O $fname https://zenodo.org/record/"${records[i-1]}"/files/$fname?download=1
+    if [ ! -e $fname ]
+    then
+      wget -O $fname https://zenodo.org/record/"${records[i-1]}"/files/$fname?download=1
+    fi
   done
-  md5sum -c ../../node"${nodes[i-1]}".md5
+  md5sum -c `../../hash/node"${nodes[i-1]}".md5`
   cd ../
 done
