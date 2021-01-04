@@ -29,11 +29,11 @@ room = 'living'; %only relevant for the labels (segments should be identical)
 
 %% Dir
 if ispc
-    basedatadir = '\\Duke.edu.khk.be\SoundData2\SINSMol\data_public\Original\audio';
-    basesavedir = '\\Duke.edu.khk.be\SoundData2\SINSMol\data_public\Segmented\audio';
+    basedatadir = '..\data\Original\audio';
+    basesavedir = '..\data\Segmented\audio';
 else
-    basedatadir = '/media/SoundData2/SINSMol/data_public/Original/audio';
-    basesavedir = '/media/SoundData2/SINSMol/data_public/Segmented/audio';
+    basedatadir = '../data/Original/audio';
+    basesavedir = '../data/Segmented/audio';
 end
 labelsavedir = fullfile('..','annotation');
 

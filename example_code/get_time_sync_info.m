@@ -22,9 +22,9 @@
 addpath('functions');
 %% Dir
 if ispc
-    datadir = '\\Duke.edu.khk.be\SoundData2\SINSMol\data_public\Original\audio';
+    datadir = '..\data\Original\audio';
 else
-    datadir = '/media/SoundData2/SINSMol/data_public/Original/audio';
+    datadir = '../data/Original/audio';
 end
 savedir = 'other';
 %node_ids = [1 2 3 4 6 7 8];
