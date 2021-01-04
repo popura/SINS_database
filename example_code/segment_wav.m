@@ -17,7 +17,7 @@ clc; clear;
 addpath(fullfile('functions'));
 
 %% Inits
-node_ids = [1 2 3 4 6 7 8]; % nodes to process
+node_ids = [2 3 4 6 7 8]; % nodes to process
 mic_ids = [1 2 3 4]; % microphone indices to use
 windowsize = 10; % s
 stepsize = 10; % s

@@ -27,22 +27,23 @@ else
     datadir = '../data/Original/audio';
 end
 savedir = 'other';
-%node_ids = [1 2 3 4 6 7 8];
-node_ids = 1;
+node_ids = [1 2 3 4 6 7 8];
+%node_ids = 1;
 
 %% Get timestamps
-for n=node_ids
+for n = node_ids
     filename = ['WavTimestamps_Node' num2str(n) '.mat'];
-    if exist(fullfile(savedir,filename))~=2
-    filedir = list_folder(fullfile(datadir, ['Node' num2str(n)],'audio'),'none','all');
-    WavDatetime(length(filedir.filenames),1) = datetime;
-    for k=1:length(filedir.filenames)
-        [year,month,day,hour,min,sec,msec] = filename2time(filedir.filenames{k},1);
-        WavDatetime(k,1) = datetime(datenum(year,month,day,hour,min,sec+msec/1000),'ConvertFrom','datenum');
-    end
-    WavFiles = filedir.filenames;
-    save(fullfile(savedir,filename),'WavFiles','WavDatetime');
-    display(['Obtained timestamps from Node ' num2str(n)]);
+    if exist(fullfile(savedir, filename))~=2
+        disp(fullfile(datadir, ['Node' num2str(n)], 'audio'));
+        filedir = list_folder(fullfile(datadir, ['Node' num2str(n)], 'audio'),'none','all');
+        WavDatetime(length(filedir.filenames), 1) = datetime;
+        for k=1:length(filedir.filenames)
+            [year,month,day,hour,min,sec,msec] = filename2time(filedir.filenames{k},1);
+            WavDatetime(k,1) = datetime(datenum(year,month,day,hour,min,sec+msec/1000),'ConvertFrom','datenum');
+        end
+        WavFiles = filedir.filenames;
+        save(fullfile(savedir, filename),'WavFiles','WavDatetime');
+        display(['Obtained timestamps from Node ' num2str(n)]);
     end
 end
 

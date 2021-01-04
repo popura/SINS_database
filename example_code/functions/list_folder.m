@@ -34,11 +34,11 @@ function o = list_folder(orig_dir,type_folder,type_file,contain1,contain2)
         error('Je moet minimaal de main dir, type_folder & type_file opgeven.');
     end;
     %dir options
-    if ~strcmp(type_folder,'all') && ~strcmp(type_folder,'contain') && ~strcmp(type_folder,'select'),
+    if ~strcmp(type_folder,'all') && ~strcmp(type_folder,'contain') && ~strcmp(type_folder,'select') && ~strcmp(type_folder, 'none'),
         error('Gekozen type_folder is niet beschikbaar.');
     end
     %file options
-    if ~strcmp(type_file,'all') && ~strcmp(type_file,'contain') && ~strcmp(type_file,'select'),
+    if ~strcmp(type_file,'all') && ~strcmp(type_file,'contain') && ~strcmp(type_file,'select') && ~strcmp(type_folder, 'none'),
         error('Gekozen type_file is niet beschikbaar.');
     end
     %contain
