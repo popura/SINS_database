@@ -25,8 +25,14 @@
 
 function [start_id,stop_id,start_offset,stop_offset,timestamps_num] = getsegmentrange_sync(pulses,length_files,WavDatetime,start_time,stop_time)
     %% Get start and stop indices  
-    tmp_ids = find(WavDatetime<=start_time); start_id = tmp_ids(end)-1; %start file
-    tmp_ids = find(WavDatetime<=stop_time); stop_id = tmp_ids(end)+1; %stop file
+    tmp_ids = find(WavDatetime<=start_time);
+    start_id = tmp_ids(end)-1; %start file
+    tmp_ids = find(WavDatetime<=stop_time);
+    stop_id = tmp_ids(end)+1; %stop file
+    if (start_id > length(length_files)) && (stop_id > length(length_files))
+        disp(["length: " num2str(length(length_files)) " start_id: " num2str(start_id) "stop_id: " num2str(stop_id)]);
+        error("start_/stop_id is larger than the element number of length_files");
+    end
     % cumsum sync pulses to obtain seconds<>samples
     fscs = cumsum([0; length_files(start_id:stop_id-1)]);
     sync_pulses = [];

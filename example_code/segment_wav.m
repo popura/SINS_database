@@ -61,7 +61,12 @@ for n=node_ids
        
         %% Get data and save
         % start stop (in case of resampling, provide some samples before and after to remove edge effects)
-        [start_id,stop_id,start_offset,stop_offset] = getsegmentrange_sync(pulses,length_files,WavDatetime,start_time-resampling*seconds,stop_time+resampling*seconds);        
+        try
+            [start_id,stop_id,start_offset,stop_offset] = getsegmentrange_sync(pulses,length_files,WavDatetime,start_time-resampling*seconds,stop_time+resampling*seconds);        
+        catch
+            disp(["The " num2str(f) "-th flame was skipped"]);
+            continue:
+        end
         % inits
         datadir = fullfile(basedatadir,['Node' num2str(n)],'audio'); 
         savedir = fullfile(basesavedir,strrep([num2str(windowsize) 's_' num2str(stepsize) 's'],'.','_'),['Node' num2str(n)]); 
