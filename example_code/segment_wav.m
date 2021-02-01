@@ -64,8 +64,8 @@ for n=node_ids
         try
             [start_id,stop_id,start_offset,stop_offset] = getsegmentrange_sync(pulses,length_files,WavDatetime,start_time-resampling*seconds,stop_time+resampling*seconds);        
         catch
-            disp(["The " num2str(f) "-th flame was skipped"]);
-            continue:
+            disp(["The " num2str(t) "-th flame was skipped"]);
+            continue;
         end
         % inits
         datadir = fullfile(basedatadir,['Node' num2str(n)],'audio'); 
